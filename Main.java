@@ -20,12 +20,15 @@ public class Main {
     public static ArrayList<String> pesquisarArquivo(String arquivoComTxt) {
         try {
             ArrayList<String> dadosColetados = new ArrayList<>();
+            String dadosColetadosPorLinha = null;
 
             File documentoTxt = new File(arquivoComTxt);
             Scanner leituraDeArquivo = new Scanner(documentoTxt);
+
             int numeroDeLinhas = 0;
             while (leituraDeArquivo.hasNextLine()) {
-                dadosColetados.add(leituraDeArquivo.nextLine());
+                dadosColetadosPorLinha = numeroDeLinhas + "; " + leituraDeArquivo.nextLine();
+                dadosColetados.add(dadosColetadosPorLinha);
                 numeroDeLinhas++;
             }
             leituraDeArquivo.close();
@@ -43,9 +46,7 @@ public class Main {
         int quantidadeDeEntradas = dadosColetados.size();
         //Collections.sort(dadosColetados);
         for (String i : dadosColetados) {
-            if (Objects.equals(i, "Deforestation")) {
-                dadosColetados.set(0, i);
-            }
+            
         }
         System.out.println(dadosColetados);
 
